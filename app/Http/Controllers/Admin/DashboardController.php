@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     public function index(){
-        return "pagina dell'aministrazione";
+        return view("admin/home");
     }
 }
