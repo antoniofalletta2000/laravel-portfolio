@@ -10,7 +10,7 @@
 <body>
 
     <div class="container">
-        <h1>@yield("title")</h1>
+        <h1 class="text-center mt-2">@yield("title")</h1>
 
         @yield("content")
     </div>

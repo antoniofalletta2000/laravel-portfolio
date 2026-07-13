@@ -12,7 +12,7 @@
         <div class="card">
             <h2 class="text-center mt-2">{{$project->nome}}</h2>
             <div class="card-body">
-                <a href="">Visualizza</a>
+                <a href="{{route('projects.show', $project)}}">Visualizza</a>
             </div>
         </div>
     </div>

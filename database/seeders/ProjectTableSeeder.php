@@ -30,7 +30,7 @@ class ProjectTableSeeder extends Seeder
                 "nome" => "Boolflix",
                 "cliente" => "Amanti del cinema e Serie TV",
                 "periodo" => "2026-05-27",
-                "riassunto" => "Sito pensato per coloro che ricercano intrattenimento mentre ci si mangia dei Pop Corn"
+                "riassunto" => "Sito pensato per coloro che ricercano intrattenimento mentre si condividono dei Pop Corn"
             ]
         ];
 

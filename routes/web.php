@@ -27,6 +27,7 @@ Route::middleware(["auth","verified"])
     ->name("index");
 });
 
-Route::resource("projects", ProjectController::class);
+Route::resource("projects", ProjectController::class)
+->middleware(["auth", "verified"]);
 
 require __DIR__.'/auth.php';
