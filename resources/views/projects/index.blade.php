@@ -4,6 +4,8 @@
 
 @section("content")
 
+<a class="btn btn-primary" type="submit" href="{{route("projects.create")}}">Aggiungi progetto</a>
+
 <div class="row row-cols-1 row-cols-md-3">
 
     @foreach ($projects as $project)
