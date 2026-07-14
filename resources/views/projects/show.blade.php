@@ -5,6 +5,7 @@
 @section('title', $project->nome)
 
 @section('content')
+<a class="btn btn-warning" type="submit" href="{{route("projects.edit", $project)}}">Modifica</a>
     <div class="d-flex flex-column gap-3">
         <div>
             <h3>A chi è rivolto?</h3>
