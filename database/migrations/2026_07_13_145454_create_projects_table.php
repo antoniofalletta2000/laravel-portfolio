@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string("cliente")->nullable();
             $table->date("periodo");
             $table->longText("riassunto");
+            
 
             $table->timestamps();
         });
