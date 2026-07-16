@@ -13,7 +13,16 @@
 
 
 
-    <div class="d-flex flex-column gap-3">
+    <div class="d-flex flex-column gap-3 pt-4">
+        {{-- @dd($types) --}}
+         <div>
+            <h3>Tipologia</h3>
+            <p>{{ $project->type->nome }}</p>
+        </div>
+        <div>
+            <h3>A chi è rivolto?</h3>
+            <p>{{ $project->cliente }}</p>
+        </div>
         <div>
             <h3>A chi è rivolto?</h3>
             <p>{{ $project->cliente }}</p>
