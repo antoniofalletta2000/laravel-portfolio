@@ -71,6 +71,8 @@
                                 <a class="dropdown-item" href="{{ url('profile') }}">{{__('Profile')}}</a>
                                 <a class="dropdown-item" href="{{ route('projects.index') }}">Projects
                                 </a>
+                                <a class="dropdown-item" href="{{ route('types.index') }}">Types
+                                </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
