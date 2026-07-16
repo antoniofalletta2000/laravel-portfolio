@@ -25,7 +25,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view("projects.create");
+        $types = Type::all();
+        return view("projects.create", compact("types"));
     }
 
     /**
@@ -41,6 +42,8 @@ class ProjectController extends Controller
         $newProject->cliente = $data["cliente"];
         $newProject->periodo = $data["periodo"];
         $newProject->riassunto = $data["riassunto"];
+
+        $newProject->type_id = $data["type_id"];
 
         $newProject->save();
 
@@ -63,7 +66,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view("projects.edit", compact("project"));
+         $types = Type::all();
+        return view("projects.edit", compact("project","types"));
     }
 
     /**
@@ -77,6 +81,8 @@ class ProjectController extends Controller
         $project->cliente=$data["cliente"];
         $project->periodo=$data["periodo"];
         $project->riassunto=$data["riassunto"];
+
+        $project->type_id = $data["type_id"];
 
         $project -> update();
 

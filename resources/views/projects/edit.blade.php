@@ -1,27 +1,49 @@
-@extends("layouts.projects")
+@extends('layouts.projects')
 
-@section("title", "Modifica un progetto")
+@section('title', 'Modifica un progetto')
 
-@section("content")
+@section('content')
 
-<form action="{{route('projects.update', $project)}}" method="POST">
-@csrf
-@method("PUT")
-<label for="nome">Nome</label>
-<input type="text" name="nome" id="nome" value="{{$project->nome}}">
+    <form action="{{ route('projects.update', $project) }}" method="POST">
+        @csrf
+        @method('PUT')
+        <div class="form-control">
+            <div class="d-flex flex-column">
+                <label class="fw-bold" for="nome">Nome</label>
+                <input type="text" name="nome" id="nome" value="{{ $project->nome }}">
+            </div>
 
-<label for="cliente">cliente</label>
-<input type="text" name="cliente" id="cliente" value="{{$project->cliente}}">
+            <div class="d-flex flex-column">
+                <label class="fw-bold" for="cliente">cliente</label>
+                <input type="text" name="cliente" id="cliente" value="{{ $project->cliente }}">
+            </div>
 
-<label for="periodo">data (Anno-Mese-Giorno)</label>
-<input type="text" name="periodo" id="periodo" value="{{$project->periodo}}">
+            <div class="d-flex flex-column">
+                <label class="fw-bold" for="periodo">data (Anno-Mese-Giorno)</label>
+                <input type="text" name="periodo" id="periodo" value="{{ $project->periodo }}">
+            </div>
 
-<label for="riassunto">riassunto</label>
-<input type="text" name="riassunto" id="riassunto" value="{{$project->riassunto}}">
+            <div class="d-flex flex-column">
+                <label class="fw-bold" for="riassunto">riassunto</label>
+                <input type="text" name="riassunto" id="riassunto" value="{{ $project->riassunto }}">
+            </div>
 
-<input type="submit" value="Salva">
+            <div class="d-flex flex-column">
+                <div class="d-flex flex-column">
+                    <label class="fw-bold" for="type_id">tipologia</label>
+                    <select name="type_id" id="type_id">
+                        @foreach ($types as $type)
+                            <option value="{{ $type->id }}">{{ $type->nome }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+
+            <input class="mt-5" type="submit" value="Salva">
+
+        </div>
 
 
-</form>
+    </form>
 
 @endsection
