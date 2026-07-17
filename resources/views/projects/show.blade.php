@@ -17,7 +17,7 @@
         {{-- @dd($types) --}}
          <div>
             <h3>Tipologia</h3>
-            <p>{{ $project->type->nome }}</p>
+            <p>{{ $project->type?->nome }}</p>
         </div>
         <div>
             <h3>A chi è rivolto?</h3>

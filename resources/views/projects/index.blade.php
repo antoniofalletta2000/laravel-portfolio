@@ -15,7 +15,7 @@
             <h2 class="text-center mt-2">{{$project->nome}}</h2>
             <div class="card-body">
                 <div class="d-flex justify-content-between">
-                    <p>{{$project->type->nome}}</p>
+                    <p>{{$project->type?->nome}}</p>
                    <a href="{{route('projects.show', $project)}}">Visualizza</a>
                 </div>
 
