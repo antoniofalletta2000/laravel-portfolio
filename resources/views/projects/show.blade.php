@@ -15,13 +15,9 @@
 
     <div class="d-flex flex-column gap-3 pt-4">
         {{-- @dd($types) --}}
-         <div>
+        <div>
             <h3>Tipologia</h3>
             <p>{{ $project->type?->nome }}</p>
-        </div>
-        <div>
-            <h3>A chi è rivolto?</h3>
-            <p>{{ $project->cliente }}</p>
         </div>
         <div>
             <h3>A chi è rivolto?</h3>
@@ -32,6 +28,18 @@
             <h3>Riassunto</h3>
             <p>{{ $project->riassunto }}</p>
         </div>
+
+        @if (count($project->technologies) > 0)
+            <small>
+
+                Tecnologie utilizzate:
+                @foreach ($project->technologies as $technology)
+                    <span class="badge" style="background-color: {{ $technology->colore }}">{{ $technology->nome }}</span>
+                @endforeach
+
+
+            </small>
+        @endif
 
         <div>
             <h3>Data</h3>

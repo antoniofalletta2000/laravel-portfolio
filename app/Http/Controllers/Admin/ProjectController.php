@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,7 @@ class ProjectController extends Controller
         $projects = Project::all();
         $types = Type::all();
 
-        return view("projects.index", compact("projects","types"));
+        return view("projects.index", compact("projects", "types"));
     }
 
     /**
@@ -26,7 +27,8 @@ class ProjectController extends Controller
     public function create()
     {
         $types = Type::all();
-        return view("projects.create", compact("types"));
+        $technologies = Technology::all();
+        return view("projects.create", compact("types", "technologies"));
     }
 
     /**
@@ -47,8 +49,11 @@ class ProjectController extends Controller
 
         $newProject->save();
 
-        return redirect()->route("projects.show", $newProject);
+        if ($request->has("tecchnologies")) {
+            $$newProject->technologies()->attach($data["technologies"]);
+        }
 
+        return redirect()->route("projects.show", $newProject);
     }
 
     /**
@@ -58,7 +63,7 @@ class ProjectController extends Controller
     {
         /* dd($project); */
         $types = Type::all();
-        return view ("projects.show", compact("project","types"));
+        return view("projects.show", compact("project", "types"));
     }
 
     /**
@@ -66,8 +71,9 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-         $types = Type::all();
-        return view("projects.edit", compact("project","types"));
+        $types = Type::all();
+        $technologies = Technology::all();
+        return view("projects.edit", compact("project", "types", "technologies"));
     }
 
     /**
@@ -77,14 +83,20 @@ class ProjectController extends Controller
     {
         $data = $request->all();
 
-        $project->nome=$data["nome"];
-        $project->cliente=$data["cliente"];
-        $project->periodo=$data["periodo"];
-        $project->riassunto=$data["riassunto"];
+        $project->nome = $data["nome"];
+        $project->cliente = $data["cliente"];
+        $project->periodo = $data["periodo"];
+        $project->riassunto = $data["riassunto"];
 
         $project->type_id = $data["type_id"];
 
-        $project -> update();
+        $project->update();
+
+        if ($request->has("technologies")) {
+            $project->technologies()->sync($data["technologies"]);
+        } else {
+            $project->technologies()->detach();
+        }
 
         return redirect()->route("projects.show", $project);
     }
